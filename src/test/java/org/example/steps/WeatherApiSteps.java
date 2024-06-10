@@ -33,7 +33,7 @@ public class WeatherApiSteps {
     }
 
     @Given("the following cities and their expected weather data")
-    public void the_following_cities_and_their_expected_weather_data(io.cucumber.datatable.DataTable dataTable) {
+    public void theFollowingCitiesAndTheirExpectedWeatherData(io.cucumber.datatable.DataTable dataTable) {
         List<Map<String, String>> rows = dataTable.asMaps(String.class, String.class);
         for (Map<String, String> row : rows) {
             Map<String, String> weatherData = new HashMap<>();
@@ -43,7 +43,7 @@ public class WeatherApiSteps {
     }
 
     @When("I request the current weather for these cities")
-    public void i_request_the_current_weather_for_these_cities() {
+    public void requestTheCurrentWeatherForTheseCities() {
         for (String city : expectedWeatherData.keySet()) {
             Response response = RestAssured.given()
                     .queryParam("key", apiKey)
@@ -54,7 +54,7 @@ public class WeatherApiSteps {
     }
 
     @Then("the actual weather data should match the expected values")
-    public void the_actual_weather_data_should_match_the_expected_values() {
+    public void theActualWeatherDataShouldMatchTheExpectedValues() {
         for (String city : expectedWeatherData.keySet()) {
             JSONObject actualData = actualWeatherData.get(city);
             Map<String, String> expectedData = expectedWeatherData.get(city);

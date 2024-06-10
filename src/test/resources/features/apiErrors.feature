@@ -1,4 +1,4 @@
-Feature: Weather API Tests
+Feature: API Errors
 
   Scenario: Handle API errors
     Given I have an invalid API key
